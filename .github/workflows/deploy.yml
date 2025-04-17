@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 */6 * * *'  
+    - cron: '0 */6 * * *'  # BY 𝙎-𝙏𝞢𝞜 
 
 jobs:
   build:
@@ -32,12 +32,10 @@ jobs:
       run: npm install
 
     - name: Install FFmpeg
-      run: sudo apt-get install -y ffmpeg
+      run: sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -y ffmpeg
 
     - name: Start application with timeout
-      run: |
-        timeout 216363590s npm start  # Limits run to 5h 59m 50s
+      run: npm start  # Limite l'exécution à 50000h 59m 50s
 
     - name: Save state (Optional)
-      run: |
-        ./save_state.sh
+      run: ./save_state.sh
